@@ -1,4 +1,4 @@
-document.write("<script type='text/javascript' src='js/vistaArbolB.js'></script>");
+document.write("<script type='text/javascript' src='js/vistaArbolB.js?v=2'></script>");
 
 var vectorDeOperaciones=new Array();//vector que representa la cola de operaciones que debe ir haciendo la vista
 var operacionEnCurso=false;//variable booleana que representa si la vista esta ejecutando alguna operacion

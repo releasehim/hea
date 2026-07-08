@@ -1,4 +1,4 @@
-document.write("<script type='text/javascript' src='js/vistaArbolBEstrella.js'></script>");
+document.write("<script type='text/javascript' src='js/vistaArbolBEstrella.js?v=2'></script>");
 var vectorDeOperaciones=new Array();//vector que representa la cola de operaciones que debe ir haciendo la vista
 var operacionEnCurso=false;//variable booleana que representa si la vista esta ejecutando alguna operacion
 var vectorRollBack=new Array();//vector de operaciones que se realizan para hacer el rollback en caso de ser necesario

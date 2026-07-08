@@ -1,4 +1,4 @@
-document.write("<script type='text/javascript' src='js/controladorArbolB.js'></script>");
+document.write("<script type='text/javascript' src='js/controladorArbolB.js?v=2'></script>");
 var minElementos;
 var maxElementos;//variable que se setea en funcion del orden que selecciona el usuario
 

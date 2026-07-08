@@ -1,4 +1,4 @@
-document.write("<script type='text/javascript' src='js/controladorArbolBEstrella.js'></script>");
+document.write("<script type='text/javascript' src='js/controladorArbolBEstrella.js?v=2'></script>");
 var minElementos;
 var maxElementos;//variable que se setea en funcion del orden que selecciona el usuario
 var dosTercios;//variable que representa los dos tercios llenos que debe cumplir cada nodo en la fusion de 2 a 3
