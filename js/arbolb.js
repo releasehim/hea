@@ -537,6 +537,8 @@ function NodoB(){
 							vectorCamino.push(posicionNodo);
 					 }
 				}
+				var logBusqueda = generarPasosBusqueda(me, elemento, expresionCompleta, alturaGrafico, existeElemento);
+				encolarOperacion("mostrarMensajeOperacion('" + logBusqueda.replace(/'/g, "\\'") + "')");
 				encolarOperacion("marcarCaminoBusqueda("+elemento+","+ultimoElementoABuscar+","+existeElemento+")");
 				ejecutarAnimacion();
 	   }else

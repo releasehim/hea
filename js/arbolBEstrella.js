@@ -918,7 +918,7 @@ function NodoBEstrella(){
 			}//fin del else
 		}else //fin de aturaGrafico< 4
 		{
-			alert("Una sesión de aprendizaje permite hacer inserciones hasta la altura 4, puede reiniciar el árbol y seguir con otra sesión");
+			alert("Una sesiÃ³n de aprendizaje permite hacer inserciones hasta la altura 4, puede reiniciar el Ã¡rbol y seguir con otra sesiÃ³n");
 		}
 	}//fin de insertoElemento
 	
@@ -1197,12 +1197,14 @@ function NodoBEstrella(){
 							vectorCamino.push(posicionNodo);
 					 }
 				}
+				var logBusqueda = generarPasosBusqueda(me, elemento, expresionCompleta, alturaGrafico, existeElemento);
+				encolarOperacion("mostrarMensajeOperacionEstrella('" + logBusqueda.replace(/'/g, "\\'") + "')");
 				encolarOperacion("marcarCaminoBusquedaEstrella("+elemento+","+ultimoElementoABuscar+","+existeElemento+")");
 				ejecutarAnimacionEstrella();
 	   }else
 	   {
 		   arbolLimpio=true;
-		   alert("El árbol no tiene elementos");
+		   alert("El Ã¡rbol no tiene elementos");
 		}
 		
 	

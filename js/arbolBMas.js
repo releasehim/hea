@@ -575,6 +575,8 @@ function NodoBMas(){
 							var posicionNodo=""+h+nodoGrafico+j;
 							vectorCaminoBMas.push(posicionNodo);									 }
 					}
+					var logBusqueda = generarPasosBusqueda(me, elemento, expresionCompleta, alturaGrafico, existeElemento);
+					encolarOperacion("mostrarMensajeOperacionBMas('" + logBusqueda.replace(/'/g, "\\'") + "')");
 					encolarOperacion("marcarCaminoBusquedaBMas("+elemento+","+ultimoElementoABuscar+","+existeElemento+")");
 					ejecutarAnimacionBMas();
 	   }else

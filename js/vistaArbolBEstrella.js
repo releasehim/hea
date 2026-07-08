@@ -335,7 +335,7 @@ function insertarSinOverFlowEstrella(altura,nodo,posicion,elemento,vueltaInserci
 		var idNodo="N"+altura+nodo;
 		var nodoMensaje=document.getElementById(idNodo);
 		var numeroNodoAMostrar=parseFloat(nodoMensaje.style.zIndex);
-		var mensaje="- Inserci\u00f3n  elemento "+elemento+" en el nodo "+numeroNodoAMostrar;
+		var mensaje="<span class='log-insert'>- Inserción del elemento <strong>"+elemento+"</strong> en el <strong>Nodo "+numeroNodoAMostrar+"</strong> (hoja).</span>";
 		mostrarMensajeOperacionEstrella(mensaje);
 	}
 }
@@ -481,7 +481,7 @@ function partirRaizEstrella(elementoAPromocionar)
 		var rotulo=vectorNumeracionEstrella.shift();
 		nodoRaiz.style.zIndex=rotulo;
 	}
-	var mensaje="- Divisi\u00f3n de la ra\u00edz, aumento de altura";
+	var mensaje="<span class='log-structural'>- ¡Desborde en el nodo raíz! Se divide la raíz y se crea una nueva raíz, incrementando la altura del árbol.</span>";
 	mostrarMensajeOperacionEstrella(mensaje);
 }
 
@@ -838,7 +838,7 @@ function partirNodoEstrella(altura,nodo,posicionAPromocionar,elementoAPromociona
 	var idNodoMensaje="N"+altura+nodo+"Provisorio";
 	var nodoMensaje=document.getElementById(idNodoMensaje);
 	var numeroNodoMensaje=nodoMensaje.style.zIndex;
-	var mensaje="- Desborde del nodo "+numeroNodoMensaje+". Divisi\u00f3n y promoci\u00f3n del elemento "+elementoAPromocionar;
+	var mensaje="<span class='log-structural'>- ¡Desborde en el <strong>Nodo "+numeroNodoMensaje+"</strong>! Se divide el nodo y se promociona el elemento <strong>"+elementoAPromocionar+"</strong> al padre.</span>";
 	mostrarMensajeOperacionEstrella(mensaje);
 }
 
@@ -1514,7 +1514,7 @@ function borrarElementoDeNodoIntermedioConUnderAIzqEstrella(altura,nodo,posicion
 	var idNodoMensaje="N"+altura+nodo;
 	var divNodoMensaje=document.getElementById(idNodoMensaje);
 	var numeroNodoMensaje=divNodoMensaje.style.zIndex;
-	var mensaje="- Eliminaci\u00f3n del elemento "+elementoAEliminar+". Underflow del nodo "+numeroNodoMensaje+". Redistribuci\u00f3n a Izquierda";
+	var mensaje="<span class='log-structural'>- Eliminación del elemento <strong>"+elementoAEliminar+"</strong>. ¡Underflow en el <strong>Nodo "+numeroNodoMensaje+"</strong>! Se realiza redistribución con el hermano derecho.</span>";
 	mostrarMensajeOperacionEstrella(mensaje);
 }
 
@@ -1652,10 +1652,10 @@ function redistribuirAIzqEstrella(altura,nodo,posicionElemento,elementoIntermedi
 	ordenarNodoEstrella(altura,nodo,elementoIntermedioPadre);
 	if(posicionNodo=="extremo")
 	{
-		var mensaje="- Redistribuci\u00f3n a izquierda.";
+		var mensaje="<span class='log-structural'>- Redistribución a izquierda: baja el elemento divisor del padre y sube el menor elemento del hermano derecho al padre.</span>";
 	}else
 	{
-		var mensaje="- Redistribuci\u00f3n a izquierda.";
+		var mensaje="<span class='log-structural'>- Redistribución a izquierda: baja el elemento divisor del padre y sube el menor elemento del hermano derecho al padre.</span>";
 	}
 	mostrarMensajeOperacionEstrella(mensaje);
 	habilitarBotonesEstrella();
@@ -1704,10 +1704,10 @@ function redistribuirADerEstrella(altura,nodo,posicionElemento,elementoIntermedi
 	ordenarNodoEstrella(altura,nodo,elementoIntermedioPadre);
 	if(posicionNodo=="extremo")
 	{
-		var mensaje="- Redistribuci\u00f3n a derecha.";
+		var mensaje="<span class='log-structural'>- Redistribución a derecha: baja el elemento divisor del padre y sube el mayor elemento del hermano izquierdo al padre.</span>";
 	}else
 	{
-		var mensaje="- Redistribuci\u00f3n a derecha."
+		var mensaje="<span class='log-structural'>- Redistribución a derecha: baja el elemento divisor del padre y sube el mayor elemento del hermano izquierdo al padre.</span>"
 	}
 	mostrarMensajeOperacionEstrella(mensaje);
 	habilitarBotonesEstrella();
@@ -1771,10 +1771,10 @@ function redistribuirAIzqConHijosEstrella(altura,nodo,posicionElemento,elementoI
 	setTimeout("moverArbolParaScrollEstrella()",2000);
 	if(posicionNodo=="extremo")
 	{	
-		var mensaje="- Redistribuci\u00f3n a izquierda.";
+		var mensaje="<span class='log-structural'>- Redistribución a izquierda: baja el elemento divisor del padre y sube el menor elemento del hermano derecho al padre.</span>";
 	}else
 	{
-		var mensaje="- Redistribuci\u00f3n a izquierda.";
+		var mensaje="<span class='log-structural'>- Redistribución a izquierda: baja el elemento divisor del padre y sube el menor elemento del hermano derecho al padre.</span>";
 	}
 	mostrarMensajeOperacionEstrella(mensaje);
 }
@@ -1837,10 +1837,10 @@ function redistribuirADerConHijosEstrella(altura,nodo,posicionElemento,elementoI
 	setTimeout("moverArbolParaScrollEstrella()",1000);
 	if(posicionNodo=="extremo")
 	{
-		var mensaje="- Redistribuci\u00f3n a derecha.";
+		var mensaje="<span class='log-structural'>- Redistribución a derecha: baja el elemento divisor del padre y sube el mayor elemento del hermano izquierdo al padre.</span>";
 	}else
 	{
-		var mensaje="- Redistribuci\u00f3n a derecha.";
+		var mensaje="<span class='log-structural'>- Redistribución a derecha: baja el elemento divisor del padre y sube el mayor elemento del hermano izquierdo al padre.</span>";
 	}
 	mostrarMensajeOperacionEstrella(mensaje);
 	
@@ -1990,7 +1990,7 @@ function fusionConHermanoDerechoEstrella(altura,nodo,posicionElemento,elementoIn
 			//realizo el efecto de fusion
 			$('#'+idNodoElementos).animate({top:0,left:0},1250,function(){padreNodos.removeChild(nodoElementos)});
 			$('#'+idNodoHermanoDerecho).animate({top:0,left:0},1250,function(){padreNodos.removeChild(nodoHermanoDerecho);var container=document.getElementById("contenedor"); posicionContenedor=position(container);rotularNodo(padreNodos,posicionContenedor);});
-			var mensaje="- Fusi\u00f3n con hermano derecho. Disminuci\u00f3n de altura.";
+			var mensaje="<span class='log-structural'>- Fusión con hermano derecho: se combinan los nodos y baja el elemento del padre. Se disminuye la altura del árbol.</span>";
 			mostrarMensajeOperacionEstrella(mensaje);
 			habilitarBotonesEstrella();
 		}else//el padre tiene mas de dos hijos o es altura mayor a uno
@@ -2018,7 +2018,7 @@ function fusionConHermanoDerechoEstrella(altura,nodo,posicionElemento,elementoIn
 					setTimeout("moverArbolParaScrollEstrella()",1000);
 				}
 			);
-			var mensaje="- Fusi\u00f3n con hermano derecho.";
+			var mensaje="<span class='log-structural'>- Fusión con hermano derecho: se combinan los nodos y baja el elemento divisor del padre.</span>";
 			mostrarMensajeOperacionEstrella(mensaje);
 			habilitarBotonesEstrella();
 		}
@@ -2065,7 +2065,7 @@ function fusionConHermanoDerechoEstrella(altura,nodo,posicionElemento,elementoIn
 					setTimeout("moverArbolParaScrollEstrella()",1000);
 				}
 			);
-			var mensaje="- Fusi\u00f3n con hermano derecho. Disminuci\u00f3n de altura.";
+			var mensaje="<span class='log-structural'>- Fusión con hermano derecho: se combinan los nodos y baja el elemento del padre. Se disminuye la altura del árbol.</span>";
 			mostrarMensajeOperacionEstrella(mensaje);
 			habilitarBotonesEstrella();
 		}else
@@ -2102,7 +2102,7 @@ function fusionConHermanoDerechoEstrella(altura,nodo,posicionElemento,elementoIn
 				centrarHijosEnFuncionAPadreEstrella(nodoHermanoDerecho.id);
 				centrarArbolEstrella(padreNodos);
 				setTimeout("moverArbolParaScrollEstrella()",1000);
-				var mensaje="- Fusi\u00f3n con hermano derecho.";
+				var mensaje="<span class='log-structural'>- Fusión con hermano derecho: se combinan los nodos y baja el elemento divisor del padre.</span>";
 				mostrarMensajeOperacionEstrella(mensaje);
 				habilitarBotonesEstrella();
 			}else
@@ -2136,7 +2136,7 @@ function fusionConHermanoDerechoEstrella(altura,nodo,posicionElemento,elementoIn
 				centrarHijosEnFuncionAPadreEstrella(nodoHermanoDerecho.id);
 				centrarArbolEstrella(padreNodos);
 				setTimeout("moverArbolParaScrollEstrella()",1000);
-				var mensaje="- Fusi\u00f3n con hermano derecho.";
+				var mensaje="<span class='log-structural'>- Fusión con hermano derecho: se combinan los nodos y baja el elemento divisor del padre.</span>";
 				mostrarMensajeOperacionEstrella(mensaje);
 				habilitarBotonesEstrella();
 			}
@@ -2185,10 +2185,10 @@ function fusionConHermanoIzquierdoEstrella(altura,nodo,posicionElemento,elemento
 			$('#'+idNodoHermanoIzquierdo).animate({top:0,left:0},1250,function(){padreNodos.removeChild(nodoHermanoIzquierdo);var container=document.getElementById("contenedor"); posicionContenedor=position(container);rotularNodo(padreNodos,posicionContenedor);});
 			if(posicionNodo=="extremo")
 			{
-				var mensaje="- Fusi\u00f3n con hermano izquierdo. Disminuci\u00f3n de altura.";
+				var mensaje="<span class='log-structural'>- Fusión con hermano izquierdo: se combinan los nodos y baja el elemento del padre. Se disminuye la altura del árbol.</span>";
 			}else
 			{
-				var mensaje="- Fusi\u00f3n con hermano izquierdo. Disminuci\u00f3n de altura.";
+				var mensaje="<span class='log-structural'>- Fusión con hermano izquierdo: se combinan los nodos y baja el elemento del padre. Se disminuye la altura del árbol.</span>";
 			}
 			mostrarMensajeOperacionEstrella(mensaje);
 			habilitarBotonesEstrella();
@@ -2218,10 +2218,10 @@ function fusionConHermanoIzquierdoEstrella(altura,nodo,posicionElemento,elemento
 			);
 			if(posicionNodo=="extremo")
 			{
-				var mensaje="- Fusi\u00f3n con hermano Izquierdo.";
+				var mensaje="<span class='log-structural'>- Fusión con hermano izquierdo: se combinan los nodos y baja el elemento divisor del padre.</span>";
 			}else
 			{
-				var mensaje="- Fusi\u00f3n con hermano Izquierdo.";
+				var mensaje="<span class='log-structural'>- Fusión con hermano izquierdo: se combinan los nodos y baja el elemento divisor del padre.</span>";
 			}
 			mostrarMensajeOperacionEstrella(mensaje);
 			habilitarBotonesEstrella();
@@ -2274,10 +2274,10 @@ function fusionConHermanoIzquierdoEstrella(altura,nodo,posicionElemento,elemento
 			);
 			if(posicionNodo=="extremo")
 			{
-				var mensaje="- Fusi\u00f3n con hermano izquierdo. Disminuci\u00f3n de altura.";
+				var mensaje="<span class='log-structural'>- Fusión con hermano izquierdo: se combinan los nodos y baja el elemento del padre. Se disminuye la altura del árbol.</span>";
 			}else
 			{
-				var mensaje="- Fusi\u00f3n con hermano izquierdo. Disminuci\u00f3n de altura.";
+				var mensaje="<span class='log-structural'>- Fusión con hermano izquierdo: se combinan los nodos y baja el elemento del padre. Se disminuye la altura del árbol.</span>";
 			}
 			mostrarMensajeOperacionEstrella(mensaje);
 			habilitarBotonesEstrella();
@@ -2319,10 +2319,10 @@ function fusionConHermanoIzquierdoEstrella(altura,nodo,posicionElemento,elemento
 				setTimeout("moverArbolParaScrollEstrella()",1000);
 				if(posicionNodo=="extremo")
 				{
-					var mensaje="- Fusi\u00f3n con hermano izquierdo.";
+					var mensaje="<span class='log-structural'>- Fusión con hermano izquierdo: se combinan los nodos y baja el elemento divisor del padre.</span>";
 				}else
 				{
-					var mensaje="- Fusi\u00f3n con hermano izquierdo.";
+					var mensaje="<span class='log-structural'>- Fusión con hermano izquierdo: se combinan los nodos y baja el elemento divisor del padre.</span>";
 				}
 				mostrarMensajeOperacionEstrella(mensaje);
 				habilitarBotonesEstrella();
@@ -2361,10 +2361,10 @@ function fusionConHermanoIzquierdoEstrella(altura,nodo,posicionElemento,elemento
 				setTimeout("moverArbolParaScrollEstrella()",1000);
 				if(posicionNodo=="extremo")
 				{
-					var mensaje="- Fusi\u00f3n con hermano izquierdo.";
+					var mensaje="<span class='log-structural'>- Fusión con hermano izquierdo: se combinan los nodos y baja el elemento divisor del padre.</span>";
 				}else
 				{
-					var mensaje="- Fusi\u00f3n con hermano izquierdo.";
+					var mensaje="<span class='log-structural'>- Fusión con hermano izquierdo: se combinan los nodos y baja el elemento divisor del padre.</span>";
 				}
 			   mostrarMensajeOperacionEstrella(mensaje);
 			   habilitarBotonesEstrella();
@@ -2696,7 +2696,7 @@ function pasarElementoANodoDerecho(altura,nodo,posicion,elementoIntermedioPadre)
 		centrarArbolEstrella(nodoPadre);
 	}
 	moverArbolParaScrollEstrella();
-	var mensaje="- Redistribuci\u00f3n a derecha.";
+	var mensaje="<span class='log-structural'>- Redistribución a derecha: baja el elemento divisor del padre y sube el mayor elemento del hermano izquierdo al padre.</span>";
 	mostrarMensajeOperacionEstrella(mensaje);
 	setTimeout("habilitarBotonesEstrella()",2000);
 }
@@ -3063,7 +3063,7 @@ function borrarNodoTotalADerecha(idContenedorNodoOver)
 			auxDerecha=auxDerecha.nextSibling;
 		}
 	}
-	var mensaje="- Fusi\u00f3n con hermano derecho. Creaci\u00f3n de tres nodos dos tercios llenos. ";
+	var mensaje="<span class='log-structural'>- Fusión con hermano derecho: combinación que redistribuye elementos para formar tres nodos a 2/3 de su capacidad.</span>";
 	mostrarMensajeOperacionEstrella(mensaje);
 	moverArbolParaScrollEstrella();
 }
@@ -3163,7 +3163,7 @@ function pasarElementoANodoIzquierdo(altura,nodo,posicion,elementoIntermedioPadr
 		centrarArbolEstrella(nodoPadre);
 	}
 	moverArbolParaScrollEstrella();
-	var mensaje="- Redistribuci\u00f3n a izquierda.";
+	var mensaje="<span class='log-structural'>- Redistribución a izquierda: baja el elemento divisor del padre y sube el menor elemento del hermano derecho al padre.</span>";
 	mostrarMensajeOperacionEstrella(mensaje);
 	setTimeout("habilitarBotonesEstrella()",2000);
 }
@@ -3538,7 +3538,7 @@ function borrarNodoTotalAIzquierda(idContenedorNodoOverIzquierda)
 			auxDerecha=auxDerecha.nextSibling;
 		}
 	}
-	var mensaje="- Fusi\u00f3n con hermano izquierdo. Creaci\u00f3n de tres nodos dos tercios llenos. ";
+	var mensaje="<span class='log-structural'>- Fusión con hermano izquierdo: combinación que redistribuye elementos para formar tres nodos a 2/3 de su capacidad.</span>";
 	mostrarMensajeOperacionEstrella(mensaje);
 	moverArbolParaScrollEstrella();
 }
@@ -4017,7 +4017,7 @@ function borrarNodoTotalTresACuatro(idDivAEliminarHijo)
 			auxCuarto=auxCuarto.nextSibling;
 		}
 	}
-	var mensaje="- Fusi\u00f3n con hermano izquierdo y derecho. Creaci\u00f3n de cuatro nodos tres cuartos llenos. ";
+	var mensaje="<span class='log-structural'>- Fusión con hermanos izquierdo y derecho: combinación que redistribuye elementos para formar cuatro nodos a 3/4 de su capacidad.</span>";
 	mostrarMensajeOperacionEstrella(mensaje);
 	moverArbolParaScrollEstrella();
 }

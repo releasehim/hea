@@ -203,6 +203,19 @@
 	  font-size:11px;
   }
   
+  .log-search {
+	  color: #1e6091;
+  }
+  .log-insert {
+	  color: #2a9d8f;
+  }
+  .log-delete {
+	  color: #e76f51;
+  }
+  .log-structural {
+	  color: #7209b7;
+  }
+  
   .wrapperContenedor{
 	  margin-top:10px;
 	  margin-left:5px;

@@ -297,3 +297,71 @@ function habilitarPoliticas()
 		
 	}
 }
+
+function generarPasosBusqueda(me, elemento, expresionCompleta, alturaGrafico, existeElemento) {
+	var pasos = [];
+	var corrimientoExpresion = 11;
+	var corrimientoElementos = 0;
+	
+	for(var h=0; h<=alturaGrafico; h++) {
+		var expresionParcial = "";
+		if(h==0) {
+			expresionParcial="me.elementos[1]";
+		} else {
+			expresionParcial=expresionCompleta.substring(0,corrimientoExpresion)+".elementos[1]";
+			corrimientoExpresion=corrimientoExpresion+9;
+		}
+		
+		var cantidadElementosNodo = 0;
+		if(alturaGrafico==0) {
+			cantidadElementosNodo=expresionCompleta.substr(expresionCompleta.length-2,1);
+		} else {
+			if(h!=alturaGrafico) {
+				corrimientoElementos=corrimientoElementos+9;
+			} else {
+				corrimientoElementos=corrimientoElementos+13;
+			}
+			cantidadElementosNodo=expresionCompleta.substr(corrimientoElementos,1);
+		}
+		
+		var posicionPadre = 0;
+		if( h >= 2) {
+			posicionPadre=expresionParcial.substr(expresionParcial.length-24,1);
+		}
+		
+		var nodoGrafico=me.calcularNodoParaGrafico(expresionParcial,h,posicionPadre);
+		var nodoMensaje=document.getElementById("N"+h+nodoGrafico);
+		var numeroNodo=parseFloat(nodoMensaje.style.zIndex);
+		
+		var nodePath = expresionParcial.substring(0, expresionParcial.lastIndexOf(".elementos"));
+		var nodeObj = eval(nodePath);
+		var elementosDelNodo = nodeObj.elementos;
+		
+		var descNodo = "En <strong>Nodo " + numeroNodo + "</strong> (contiene [" + elementosDelNodo.join(", ") + "]): ";
+		if (h == alturaGrafico) {
+			if (existeElemento) {
+				descNodo += "¡Elemento <strong>" + elemento + "</strong> encontrado!";
+			} else {
+				descNodo += "El elemento <strong>" + elemento + "</strong> no existe en el árbol (se alcanzó un nodo hoja).";
+			}
+		} else {
+			var posABuscar = nodeObj.buscarPosicionDeElemento(elemento);
+			if (elemento < elementosDelNodo[0]) {
+				descNodo += "Como " + elemento + " &lt; " + elementosDelNodo[0] + ", descendemos al hijo en la posición 0.";
+			} else if (elemento > elementosDelNodo[elementosDelNodo.length - 1]) {
+				descNodo += "Como " + elemento + " &gt; " + elementosDelNodo[elementosDelNodo.length - 1] + ", descendemos al hijo en la posición " + posABuscar + ".";
+			} else {
+				descNodo += "Como " + elementosDelNodo[posABuscar - 1] + " &lt; " + elemento + " &lt; " + elementosDelNodo[posABuscar] + ", descendemos al hijo en la posición " + posABuscar + ".";
+			}
+		}
+		pasos.push(descNodo);
+	}
+	
+	var htmlMsg = "<div class='log-search'>";
+	htmlMsg += "<strong>Búsqueda de " + elemento + ":</strong><br>";
+	for (var i=0; i<pasos.length; i++) {
+		htmlMsg += "&nbsp;&nbsp;• " + pasos[i] + "<br>";
+	}
+	htmlMsg += "</div>";
+	return htmlMsg;
+}
